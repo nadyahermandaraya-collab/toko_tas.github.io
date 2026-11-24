@@ -1,0 +1,738 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shopping Cart | RAYA BAGS</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #FAF7F3;
+      color: #49372F;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .announcement {
+      background: #86675B;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+    }
+
+    header {
+      height: 82px;
+      padding: 0 7%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #FAF7F3;
+      border-bottom: 1px solid #EDE3DC;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 29px;
+      letter-spacing: 2px;
+      color: #634438;
+    }
+
+    .logo span {
+      display: block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 8px;
+      text-align: center;
+      letter-spacing: 5px;
+      margin-top: 3px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 38px;
+    }
+
+    nav a {
+      font-size: 12px;
+      letter-spacing: 1px;
+      transition: .3s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #A77C69;
+    }
+
+    .header-icons {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-size: 21px;
+    }
+
+    .menu-toggle {
+      display: none;
+      border: none;
+      background: none;
+      font-size: 25px;
+      color: #634438;
+      cursor: pointer;
+    }
+
+    .page-banner {
+      background: #EEE1D9;
+      text-align: center;
+      padding: 55px 20px;
+    }
+
+    .page-banner p {
+      color: #987363;
+      font-size: 11px;
+      letter-spacing: 4px;
+      margin-bottom: 13px;
+    }
+
+    .page-banner h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 45px;
+      font-weight: 400;
+    }
+
+    .page-banner h1 span {
+      color: #A57968;
+      font-style: italic;
+    }
+
+    .breadcrumb {
+      padding: 22px 7%;
+      font-size: 11px;
+      color: #987F72;
+    }
+
+    .cart-section {
+      padding: 25px 7% 85px;
+    }
+
+    .cart-title {
+      margin-bottom: 30px;
+    }
+
+    .cart-title h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 30px;
+      font-weight: 400;
+    }
+
+    .cart-title p {
+      font-size: 12px;
+      color: #987F72;
+      margin-top: 8px;
+    }
+
+    .cart-layout {
+      display: grid;
+      grid-template-columns: 1.8fr 1fr;
+      gap: 35px;
+      align-items: start;
+    }
+
+    .cart-items {
+      background: #FFFDFC;
+      padding: 25px;
+    }
+
+    .cart-header {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 35px;
+      gap: 15px;
+      padding-bottom: 18px;
+      border-bottom: 1px solid #E7DCD4;
+      font-size: 10px;
+      letter-spacing: 1px;
+      color: #987F72;
+    }
+
+    .cart-item {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 35px;
+      gap: 15px;
+      align-items: center;
+      padding: 20px 0;
+      border-bottom: 1px solid #EDE3DC;
+    }
+
+    .product-detail {
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      min-width: 0;
+    }
+
+    .product-detail img {
+      width: 85px;
+      height: 100px;
+      object-fit: cover;
+      background: #EEE1D9;
+    }
+
+    .product-detail h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 400;
+      margin-bottom: 7px;
+    }
+
+    .product-detail p {
+      font-size: 10px;
+      color: #987F72;
+    }
+
+    .item-price {
+      font-size: 12px;
+      font-weight: 600;
+    }
+
+    .quantity-control {
+      display: flex;
+      align-items: center;
+      border: 1px solid #DCCBC0;
+      width: fit-content;
+    }
+
+    .quantity-control button {
+      background: transparent;
+      border: none;
+      padding: 7px 10px;
+      color: #67483B;
+      cursor: pointer;
+    }
+
+    .quantity-control span {
+      font-size: 12px;
+      min-width: 20px;
+      text-align: center;
+    }
+
+    .remove-btn {
+      border: none;
+      background: transparent;
+      color: #A77C69;
+      font-size: 20px;
+      cursor: pointer;
+    }
+
+    .continue-shopping {
+      display: inline-block;
+      margin-top: 25px;
+      font-size: 11px;
+      letter-spacing: 1px;
+      border-bottom: 1px solid #806052;
+      padding-bottom: 5px;
+    }
+
+    .summary {
+      background: #F0E8E2;
+      padding: 27px;
+    }
+
+    .summary h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 25px;
+      font-weight: 400;
+      margin-bottom: 25px;
+    }
+
+    .summary-row {
+      display: flex;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 18px;
+      font-size: 12px;
+      color: #80675B;
+    }
+
+    .summary-total {
+      display: flex;
+      justify-content: space-between;
+      border-top: 1px solid #D5C2B6;
+      padding-top: 20px;
+      margin-top: 20px;
+      font-weight: 700;
+      font-size: 15px;
+    }
+
+    .shipping-note {
+      background: #FAF7F3;
+      padding: 14px;
+      margin: 22px 0;
+      font-size: 10px;
+      color: #80675B;
+      line-height: 1.8;
+    }
+
+    .checkout-btn {
+      display: block;
+      width: 100%;
+      padding: 16px;
+      border: none;
+      background: #67483B;
+      color: white;
+      font-family: inherit;
+      font-size: 11px;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: .3s;
+    }
+
+    .checkout-btn:hover {
+      background: #3E2C25;
+    }
+
+    .empty-cart {
+      text-align: center;
+      padding: 65px 20px;
+      background: #FFFDFC;
+    }
+
+    .empty-cart .icon {
+      font-size: 55px;
+      margin-bottom: 20px;
+    }
+
+    .empty-cart h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      font-weight: 400;
+      margin-bottom: 12px;
+    }
+
+    .empty-cart p {
+      color: #987F72;
+      font-size: 12px;
+      margin-bottom: 25px;
+    }
+
+    .empty-cart a {
+      display: inline-block;
+      background: #67483B;
+      color: white;
+      padding: 14px 30px;
+      font-size: 11px;
+      letter-spacing: 1px;
+    }
+
+    footer {
+      background: #49352D;
+      color: white;
+      padding: 55px 7% 22px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1.2fr 1.5fr;
+      gap: 40px;
+      padding-bottom: 40px;
+    }
+
+    .footer-brand h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      letter-spacing: 2px;
+      margin-bottom: 13px;
+    }
+
+    .footer-brand p {
+      color: #D3BFB4;
+      font-size: 11px;
+      line-height: 1.9;
+    }
+
+    .footer-column h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 400;
+      margin-bottom: 19px;
+    }
+
+    .footer-column a {
+      display: block;
+      color: #D3BFB4;
+      font-size: 11px;
+      margin-bottom: 12px;
+    }
+
+    .footer-column a:hover {
+      color: white;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #79645A;
+      padding-top: 20px;
+      text-align: center;
+      color: #D3BFB4;
+      font-size: 10px;
+    }
+
+    @media (max-width: 900px) {
+      .cart-layout {
+        grid-template-columns: 1fr;
+      }
+
+      .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      nav {
+        gap: 18px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      header {
+        height: 72px;
+        padding: 0 5%;
+      }
+
+      .logo {
+        font-size: 22px;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      nav {
+        display: none;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        width: 100%;
+        background: #FAF7F3;
+        flex-direction: column;
+        padding: 25px;
+        gap: 22px;
+      }
+
+      nav.show {
+        display: flex;
+      }
+
+      .header-icons {
+        gap: 12px;
+      }
+
+      .page-banner h1 {
+        font-size: 36px;
+      }
+
+      .cart-section {
+        padding: 20px 4% 60px;
+      }
+
+      .cart-items {
+        padding: 13px;
+        overflow-x: auto;
+      }
+
+      .cart-header,
+      .cart-item {
+        min-width: 480px;
+      }
+
+      .product-detail img {
+        width: 65px;
+        height: 78px;
+      }
+
+      .product-detail h3 {
+        font-size: 14px;
+      }
+
+      .summary {
+        padding: 22px;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px 20px;
+      }
+
+      footer {
+        padding: 40px 6% 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="announcement">
+    FREE SHIPPING FOR ORDERS OVER RP 500.000 ✦ SHOP NOW!
+  </div>
+
+  <header>
+    <a href="index.html" class="logo">
+      RAYA BAGS
+      <span>COLLECTION</span>
+    </a>
+
+    <nav id="navigation">
+      <a href="index.html">HOME</a>
+      <a href="shop.html">SHOP</a>
+      <a href="index.html#about">ABOUT</a>
+      <a href="index.html#contact">CONTACT</a>
+    </nav>
+
+    <div class="header-icons">
+      <a href="shop.html">⌕</a>
+      <a href="shop.html">♡</a>
+      <a href="cart.html" class="active">♧ <span id="cart-count">0</span></a>
+    </div>
+
+    <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+  </header>
+
+  <section class="page-banner">
+    <p>YOUR FAVORITE COLLECTION</p>
+    <h1>Shopping <span>Cart</span></h1>
+  </section>
+
+  <div class="breadcrumb">
+    HOME / SHOPPING CART
+  </div>
+
+  <section class="cart-section">
+    <div class="cart-title">
+      <h2>Your Shopping Bag</h2>
+      <p>Review your selected items before checkout.</p>
+    </div>
+
+    <div id="cartContent"></div>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <h2>RAYA BAGS</h2>
+        <p>Elegance in Every Carry. Discover beautiful bags that complete your everyday style. Quality, comfort, and
+          elegance in one collection.</p>
+      </div>
+
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="index.html#about">About Us</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+
+      <div class="footer-column">
+        <h3>Customer Care</h3>
+        <a href="index.html#contact">Shipping Information</a>
+        <a href="index.html#contact">Return Policy</a>
+        <a href="index.html#contact">FAQ</a>
+        <a href="index.html#contact">Terms & Conditions</a>
+      </div>
+
+      <div class="footer-column">
+        <h3>Our Collection</h3>
+        <a href="shop.html">Handbags</a>
+        <a href="shop.html">Tote Bags</a>
+        <a href="shop.html">Sling Bags</a>
+        <a href="shop.html">Men's Bags</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      © 2026 RAYA BAGS. All Rights Reserved.
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navigation').classList.toggle('show');
+    }
+
+    function getCart() {
+      return JSON.parse(localStorage.getItem('rayaCart')) || [];
+    }
+
+    function saveCart(cart) {
+      localStorage.setItem('rayaCart', JSON.stringify(cart));
+    }
+
+    function formatPrice(price) {
+      return 'Rp ' + price.toLocaleString('id-ID');
+    }
+
+    function updateCartCount() {
+      const cart = getCart();
+      const count = cart.reduce((total, item) => total + item.quantity, 0);
+      document.getElementById('cart-count').textContent = count;
+    }
+
+    function renderCart() {
+      const cart = getCart();
+      const container = document.getElementById('cartContent');
+
+      updateCartCount();
+
+      if (cart.length === 0) {
+        container.innerHTML = `
+                    <div class="empty-cart">
+                        <div class="icon">♧</div>
+                        <h2>Your Cart is Empty</h2>
+                        <p>You haven't added any products to your shopping bag yet.</p>
+                        <a href="shop.html">EXPLORE COLLECTION</a>
+                    </div>
+                `;
+        return;
+      }
+
+      let subtotal = 0;
+
+      const itemsHTML = cart.map((item, index) => {
+        const itemTotal = item.price * item.quantity;
+        subtotal += itemTotal;
+
+        return `
+                    <div class="cart-item">
+                        <div class="product-detail">
+                            <img src="${item.image}" alt="${item.name}">
+                            <div>
+                                <h3>${item.name}</h3>
+                                <p>RAYA BAGS COLLECTION</p>
+                            </div>
+                        </div>
+
+                        <div class="item-price">${formatPrice(item.price)}</div>
+
+                        <div class="quantity-control">
+                            <button onclick="changeQuantity(${index}, -1)">−</button>
+                            <span>${item.quantity}</span>
+                            <button onclick="changeQuantity(${index}, 1)">+</button>
+                        </div>
+
+                        <button class="remove-btn" onclick="removeItem(${index})" aria-label="Remove product">×</button>
+                    </div>
+                `;
+      }).join('');
+
+      const shipping = subtotal >= 500000 ? 0 : 20000;
+      const total = subtotal + shipping;
+
+      container.innerHTML = `
+                <div class="cart-layout">
+                    <div class="cart-items">
+                        <div class="cart-header">
+                            <span>PRODUCT</span>
+                            <span>PRICE</span>
+                            <span>QUANTITY</span>
+                            <span></span>
+                        </div>
+
+                        ${itemsHTML}
+
+                        <a href="shop.html" class="continue-shopping">← CONTINUE SHOPPING</a>
+                    </div>
+
+                    <div class="summary">
+                        <h2>Order Summary</h2>
+
+                        <div class="summary-row">
+                            <span>Subtotal</span>
+                            <span>${formatPrice(subtotal)}</span>
+                        </div>
+
+                        <div class="summary-row">
+                            <span>Shipping Fee</span>
+                            <span>${shipping === 0 ? 'FREE' : formatPrice(shipping)}</span>
+                        </div>
+
+                        <div class="summary-total">
+                            <span>Total</span>
+                            <span>${formatPrice(total)}</span>
+                        </div>
+
+                        <div class="shipping-note">
+                            ${shipping === 0 ? 'Congratulations! You get FREE shipping.' : 'Add ' + formatPrice(500000 - subtotal) + ' more to get FREE shipping.'}
+                        </div>
+
+                        <button class="checkout-btn" onclick="checkout()">PROCEED TO CHECKOUT →</button>
+                    </div>
+                </div>
+            `;
+    }
+
+    function changeQuantity(index, amount) {
+      let cart = getCart();
+
+      cart[index].quantity += amount;
+
+      if (cart[index].quantity <= 0) {
+        cart.splice(index, 1);
+      }
+
+      saveCart(cart);
+      renderCart();
+    }
+
+    function removeItem(index) {
+      let cart = getCart();
+
+      cart.splice(index, 1);
+
+      saveCart(cart);
+      renderCart();
+    }
+
+    function checkout() {
+      const cart = getCart();
+
+      if (cart.length === 0) {
+        alert('Your cart is empty.');
+        return;
+      }
+
+      const subtotal = cart.reduce((total, item) => total + item.price * item.quantity, 0);
+      const shipping = subtotal >= 500000 ? 0 : 20000;
+      const total = subtotal + shipping;
+
+      const orderDetails = cart.map(item =>
+        item.name + ' x ' + item.quantity + ' = ' + formatPrice(item.price * item.quantity)
+      ).join('\n');
+
+      alert(
+        'RAYA BAGS - ORDER SUMMARY\n\n' +
+        orderDetails +
+        '\n\nSubtotal: ' + formatPrice(subtotal) +
+        '\nShipping: ' + (shipping === 0 ? 'FREE' : formatPrice(shipping)) +
+        '\nTotal: ' + formatPrice(total) +
+        '\n\nThank you for shopping with RAYA BAGS!'
+      );
+    }
+
+    renderCart();
+  </script>
+
+</body>
+
+</html>

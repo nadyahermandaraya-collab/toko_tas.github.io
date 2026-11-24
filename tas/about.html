@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <title>About Us | RAYA BAGS</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #FAF7F3;
+      color: #67483B;
+    }
+
+    header {
+      background: #FAF7F3;
+      padding: 22px 7%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #EEE1D9;
+      position: sticky;
+      top: 0;
+      z-index: 10;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 29px;
+      font-weight: 700;
+      letter-spacing: 3px;
+      color: #67483B;
+      text-decoration: none;
+    }
+
+    nav {
+      display: flex;
+      gap: 30px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #67483B;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 1px;
+    }
+
+    nav a:hover {
+      color: #B18A76;
+    }
+
+    .hero {
+      min-height: 430px;
+      background: linear-gradient(rgba(45, 30, 23, .42), rgba(45, 30, 23, .42)), url('https://images.unsplash.com/photo-1584917865442-de89df76afd3?auto=format&fit=crop&w=1800&q=85');
+      background-size: cover;
+      background-position: center;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      text-align: center;
+      color: white;
+      padding: 40px 20px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 55px;
+      margin-bottom: 15px;
+    }
+
+    .hero p {
+      font-size: 14px;
+      letter-spacing: 2px;
+    }
+
+    .about {
+      max-width: 1100px;
+      margin: auto;
+      padding: 85px 25px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 65px;
+      align-items: center;
+    }
+
+    .about img {
+      width: 100%;
+      height: 450px;
+      object-fit: cover;
+    }
+
+    .about h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 38px;
+      margin-bottom: 22px;
+      line-height: 1.3;
+    }
+
+    .about p {
+      color: #80695E;
+      font-size: 14px;
+      line-height: 2;
+      margin-bottom: 18px;
+    }
+
+    .label {
+      color: #B18A76;
+      font-size: 12px;
+      letter-spacing: 3px;
+      font-weight: 700;
+      margin-bottom: 14px;
+    }
+
+    .values {
+      background: #EEE1D9;
+      padding: 75px 7%;
+      text-align: center;
+    }
+
+    .values h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 36px;
+      margin-bottom: 45px;
+    }
+
+    .value-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 25px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .value-card {
+      background: #FAF7F3;
+      padding: 38px 25px;
+    }
+
+    .value-card span {
+      font-size: 30px;
+    }
+
+    .value-card h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 22px;
+      margin: 18px 0 12px;
+    }
+
+    .value-card p {
+      color: #80695E;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .closing {
+      text-align: center;
+      padding: 85px 20px;
+    }
+
+    .closing h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 38px;
+      margin-bottom: 18px;
+    }
+
+    .closing p {
+      color: #80695E;
+      font-size: 14px;
+      line-height: 1.8;
+    }
+
+    footer {
+      background: #67483B;
+      color: #FAF7F3;
+      padding: 45px 7% 20px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr;
+      gap: 40px;
+      margin-bottom: 35px;
+    }
+
+    footer h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 24px;
+      margin-bottom: 15px;
+    }
+
+    footer h4 {
+      margin-bottom: 15px;
+      font-size: 14px;
+    }
+
+    footer p,
+    footer a {
+      color: #E8DCD0;
+      font-size: 13px;
+      line-height: 2;
+      text-decoration: none;
+      display: block;
+    }
+
+    .copyright {
+      border-top: 1px solid #86675B;
+      padding-top: 18px;
+      text-align: center;
+      font-size: 12px;
+      color: #E8DCD0;
+    }
+
+    @media (max-width: 700px) {
+      header {
+        flex-direction: column;
+        gap: 18px;
+      }
+
+      nav {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      .hero h1 {
+        font-size: 39px;
+      }
+
+      .about {
+        grid-template-columns: 1fr;
+        gap: 30px;
+        padding: 55px 22px;
+      }
+
+      .about img {
+        height: 330px;
+      }
+
+      .value-grid,
+      .footer-content {
+        grid-template-columns: 1fr;
+      }
+
+      .values h2,
+      .closing h2 {
+        font-size: 30px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <a href="index.html" class="logo">RAYA BAGS</a>
+    <nav>
+      <a href="index.html">HOME</a>
+      <a href="shop.html">SHOP</a>
+      <a href="about.html">ABOUT</a>
+      <a href="contact.html">CONTACT</a>
+      <a href="cart.html">CART</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <div>
+      <h1>Our Story</h1>
+      <p>STYLE, QUALITY & CONFIDENCE</p>
+    </div>
+  </section>
+
+  <section class="about">
+    <img src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?auto=format&fit=crop&w=900&q=85"
+      alt="RAYA BAGS Collection">
+    <div>
+      <div class="label">GET TO KNOW US</div>
+      <h2>More Than Just a Bag</h2>
+      <p>RAYA BAGS hadir sebagai pilihan fashion yang mengutamakan keindahan desain, kenyamanan, dan kualitas dalam
+        setiap koleksi.</p>
+      <p>Kami percaya bahwa tas bukan hanya sekadar pelengkap penampilan, tetapi juga bagian dari cara seseorang
+        mengekspresikan gaya dan kepribadiannya.</p>
+      <p>Melalui berbagai pilihan desain untuk wanita dan pria, RAYA BAGS ingin menghadirkan koleksi tas yang cocok
+        digunakan dalam berbagai aktivitas dan kesempatan.</p>
+    </div>
+  </section>
+
+  <section class="values">
+    <div class="label">WHAT WE BELIEVE IN</div>
+    <h2>Our Values</h2>
+    <div class="value-grid">
+      <div class="value-card">
+        <span>✧</span>
+        <h3>Quality</h3>
+        <p>Kami mengutamakan kualitas produk agar setiap koleksi dapat menemani aktivitas sehari-hari.</p>
+      </div>
+      <div class="value-card">
+        <span>♡</span>
+        <h3>Style</h3>
+        <p>Setiap desain dipilih dengan memperhatikan gaya, detail, dan kenyamanan untuk berbagai kebutuhan.</p>
+      </div>
+      <div class="value-card">
+        <span>✦</span>
+        <h3>Confidence</h3>
+        <p>Kami ingin setiap pelanggan merasa lebih percaya diri melalui pilihan tas yang sesuai dengan karakternya.</p>
+      </div>
+    </div>
+  </section>
+
+  <section class="closing">
+    <div class="label">RAYA BAGS</div>
+    <h2>Carry Your Style</h2>
+    <p>Discover your everyday essentials and express your style with RAYA BAGS.</p>
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div>
+        <h3>RAYA BAGS</h3>
+        <p>Discover your style with our collection of elegant and timeless bags for every occasion.</p>
+      </div>
+      <div>
+        <h4>QUICK LINKS</h4>
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="about.html">About Us</a>
+        <a href="contact.html">Contact</a>
+      </div>
+      <div>
+        <h4>INFORMATION</h4>
+        <p>Quality Collection</p>
+        <p>Fashion Essentials</p>
+        <p>Everyday Style</p>
+      </div>
+    </div>
+    <div class="copyright">© 2026 RAYA BAGS. All Rights Reserved.</div>
+  </footer>
+
+</body>
+
+</html>

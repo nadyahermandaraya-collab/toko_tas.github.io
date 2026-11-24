@@ -1,0 +1,909 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RAYA BAGS | Carry Your Style</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #FAF7F3;
+      color: #49372F;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .announcement {
+      background: #86675B;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+    }
+
+    header {
+      height: 82px;
+      padding: 0 7%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #FAF7F3;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      border-bottom: 1px solid #EDE3DC;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 29px;
+      letter-spacing: 2px;
+      color: #634438;
+    }
+
+    .logo span {
+      display: block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 8px;
+      text-align: center;
+      letter-spacing: 5px;
+      margin-top: 3px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 38px;
+    }
+
+    nav a {
+      font-size: 12px;
+      letter-spacing: 1px;
+      transition: .3s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #A77C69;
+    }
+
+    .header-icons {
+      display: flex;
+      align-items: center;
+      gap: 23px;
+      font-size: 21px;
+    }
+
+    .header-icons a:hover {
+      color: #A77C69;
+    }
+
+    .menu-toggle {
+      display: none;
+      border: none;
+      background: none;
+      font-size: 25px;
+      color: #634438;
+      cursor: pointer;
+    }
+
+    .hero {
+      min-height: 520px;
+      display: flex;
+      align-items: center;
+      padding: 55px 8%;
+      background: #EEE1D9;
+      gap: 35px;
+      overflow: hidden;
+    }
+
+    .hero-content {
+      width: 43%;
+    }
+
+    .eyebrow {
+      font-size: 11px;
+      letter-spacing: 5px;
+      color: #987363;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: clamp(45px, 5.2vw, 70px);
+      font-weight: 400;
+      line-height: 1.12;
+      color: #3D2D27;
+      margin-bottom: 20px;
+    }
+
+    .hero h1 span {
+      font-style: italic;
+      color: #A57968;
+    }
+
+    .hero-content p {
+      color: #80675B;
+      font-size: 13px;
+      line-height: 1.9;
+      margin-bottom: 28px;
+    }
+
+    .btn {
+      display: inline-block;
+      background: #67483B;
+      color: white;
+      padding: 15px 32px;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+      transition: .3s;
+    }
+
+    .btn:hover {
+      background: #3E2C25;
+      transform: translateY(-2px);
+    }
+
+    .hero-image {
+      width: 57%;
+      height: 420px;
+      object-fit: cover;
+      border-radius: 180px 180px 0 0;
+    }
+
+    .categories {
+      padding: 30px 6%;
+      display: grid;
+      grid-template-columns: repeat(6, 1fr);
+      background: #FAF7F3;
+    }
+
+    .category {
+      text-align: center;
+      border-right: 1px solid #DCCBC0;
+      padding: 8px 5px;
+      transition: .3s;
+    }
+
+    .category:last-child {
+      border: none;
+    }
+
+    .category:hover {
+      color: #B1816D;
+      transform: translateY(-4px);
+    }
+
+    .category .icon {
+      font-size: 31px;
+      margin-bottom: 9px;
+    }
+
+    .category p {
+      font-size: 12px;
+    }
+
+    .section {
+      padding: 75px 6%;
+    }
+
+    .section-heading {
+      text-align: center;
+      margin-bottom: 38px;
+    }
+
+    .section-heading .eyebrow {
+      margin-bottom: 10px;
+    }
+
+    .section-heading h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 37px;
+      font-weight: 400;
+      font-style: italic;
+    }
+
+    .section-heading p {
+      color: #987F72;
+      font-size: 12px;
+      margin-top: 8px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 22px;
+    }
+
+    .product-card {
+      background: #FFFDFC;
+      overflow: hidden;
+      transition: .3s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .product-image {
+      height: 285px;
+      position: relative;
+      overflow: hidden;
+      background: #EDE3DC;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: .5s;
+    }
+
+    .product-card:hover .product-image img {
+      transform: scale(1.06);
+    }
+
+    .tag {
+      position: absolute;
+      top: 13px;
+      left: 13px;
+      background: #A17C6C;
+      color: white;
+      font-size: 9px;
+      padding: 7px 12px;
+    }
+
+    .product-info {
+      padding: 15px 12px 19px;
+    }
+
+    .product-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 17px;
+      font-weight: 400;
+      margin-bottom: 7px;
+    }
+
+    .product-info p {
+      color: #896B5D;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .product-info a {
+      display: inline-block;
+      margin-top: 13px;
+      font-size: 10px;
+      letter-spacing: 1px;
+      border-bottom: 1px solid #896B5D;
+      padding-bottom: 4px;
+    }
+
+    .view-all {
+      text-align: center;
+      margin-top: 38px;
+    }
+
+    .view-all a {
+      display: inline-block;
+      border: 1px solid #806052;
+      padding: 14px 35px;
+      font-size: 11px;
+      letter-spacing: 2px;
+      transition: .3s;
+    }
+
+    .view-all a:hover {
+      background: #67483B;
+      color: white;
+    }
+
+    .promo {
+      margin: 10px 6% 65px;
+      min-height: 190px;
+      background: linear-gradient(90deg, #E8D2C7, #C9A998);
+      display: flex;
+      align-items: center;
+      justify-content: space-around;
+      padding: 35px;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .promo-text h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 43px;
+      font-weight: 400;
+      font-style: italic;
+    }
+
+    .promo-text p {
+      font-size: 12px;
+      margin-top: 8px;
+      letter-spacing: 2px;
+    }
+
+    .promo-discount {
+      font-family: 'Playfair Display', serif;
+      font-size: 55px;
+    }
+
+    .promo-discount span {
+      font-size: 22px;
+    }
+
+    .benefits {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      padding: 0 7% 60px;
+      gap: 25px;
+    }
+
+    .benefit {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+    }
+
+    .benefit-icon {
+      font-size: 29px;
+    }
+
+    .benefit h3 {
+      font-size: 12px;
+      font-weight: 600;
+      margin-bottom: 5px;
+    }
+
+    .benefit p {
+      font-size: 10px;
+      color: #967D70;
+    }
+
+    footer {
+      background: #49352D;
+      color: white;
+      padding: 55px 7% 22px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1.2fr 1.5fr;
+      gap: 40px;
+      padding-bottom: 40px;
+    }
+
+    .footer-brand h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      letter-spacing: 2px;
+      margin-bottom: 13px;
+    }
+
+    .footer-brand p {
+      color: #D3BFB4;
+      font-size: 11px;
+      line-height: 1.9;
+      max-width: 260px;
+    }
+
+    .footer-column h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 400;
+      margin-bottom: 19px;
+    }
+
+    .footer-column a {
+      display: block;
+      color: #D3BFB4;
+      font-size: 11px;
+      margin-bottom: 12px;
+    }
+
+    .footer-column a:hover {
+      color: white;
+    }
+
+    .newsletter input {
+      width: 100%;
+      padding: 12px;
+      margin-top: 12px;
+      border: none;
+      outline: none;
+      font-family: inherit;
+      font-size: 11px;
+    }
+
+    .newsletter button {
+      background: #C49F8D;
+      color: white;
+      border: none;
+      padding: 11px 18px;
+      margin-top: 10px;
+      cursor: pointer;
+      font-size: 11px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #79645A;
+      padding-top: 20px;
+      text-align: center;
+      color: #D3BFB4;
+      font-size: 10px;
+      letter-spacing: 1px;
+    }
+
+    @media (max-width: 900px) {
+      header {
+        padding: 0 5%;
+      }
+
+      nav {
+        gap: 18px;
+      }
+
+      .hero {
+        padding: 45px 6%;
+      }
+
+      .hero-image {
+        height: 350px;
+      }
+
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .product-image {
+        height: 260px;
+      }
+
+      .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .benefits {
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 600px) {
+      header {
+        height: 72px;
+      }
+
+      .logo {
+        font-size: 22px;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      nav {
+        display: none;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        width: 100%;
+        background: #FAF7F3;
+        flex-direction: column;
+        padding: 25px;
+        gap: 22px;
+        border-top: 1px solid #EDE3DC;
+      }
+
+      nav.show {
+        display: flex;
+      }
+
+      .header-icons {
+        gap: 13px;
+        font-size: 18px;
+      }
+
+      .hero {
+        flex-direction: column;
+        text-align: center;
+        padding: 50px 7% 35px;
+        gap: 30px;
+      }
+
+      .hero-content,
+      .hero-image {
+        width: 100%;
+      }
+
+      .hero h1 {
+        font-size: 47px;
+      }
+
+      .hero-image {
+        height: 300px;
+        border-radius: 140px 140px 0 0;
+      }
+
+      .categories {
+        grid-template-columns: repeat(3, 1fr);
+        row-gap: 20px;
+        padding: 25px 4%;
+      }
+
+      .category:nth-child(3) {
+        border-right: none;
+      }
+
+      .category:nth-child(4) {
+        border-right: 1px solid #DCCBC0;
+      }
+
+      .section {
+        padding: 55px 5%;
+      }
+
+      .section-heading h2 {
+        font-size: 30px;
+      }
+
+      .product-grid {
+        gap: 12px;
+      }
+
+      .product-image {
+        height: 205px;
+      }
+
+      .product-info h3 {
+        font-size: 15px;
+      }
+
+      .promo {
+        margin: 0 5% 50px;
+        flex-direction: column;
+        gap: 15px;
+        text-align: center;
+        padding: 35px 15px;
+      }
+
+      .promo-text h2 {
+        font-size: 35px;
+      }
+
+      .promo-discount {
+        font-size: 45px;
+      }
+
+      .benefits {
+        grid-template-columns: repeat(2, 1fr);
+        padding: 0 5% 45px;
+        gap: 25px 12px;
+      }
+
+      .benefit {
+        align-items: flex-start;
+      }
+
+      .benefit-icon {
+        font-size: 22px;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px 20px;
+      }
+
+      footer {
+        padding: 45px 6% 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="announcement">
+    FREE SHIPPING FOR ORDERS OVER RP 500.000 &nbsp; ✦ &nbsp; SHOP NOW!
+  </div>
+
+  <header>
+    <a href="index.html" class="logo">
+      RAYA BAGS
+      <span>COLLECTION</span>
+    </a>
+
+    <nav id="navigation">
+      <a href="index.html" class="active">HOME</a>
+      <a href="shop.html">SHOP</a>
+      <a href="#about">ABOUT</a>
+      <a href="#contact">CONTACT</a>
+    </nav>
+
+    <div class="header-icons">
+      <a href="shop.html" aria-label="Search">⌕</a>
+      <a href="shop.html" aria-label="Favorites">♡</a>
+      <a href="cart.html" aria-label="Cart">♧</a>
+    </div>
+
+    <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+  </header>
+
+  <section class="hero">
+    <div class="hero-content">
+      <div class="eyebrow">RAYA BAGS COLLECTION</div>
+      <h1>Carry Your Style, <span>Anywhere.</span></h1>
+      <p>Discover the perfect bag for every moment. Find your favorite collection and express your unique style with
+        RAYA BAGS.</p>
+      <a href="shop.html" class="btn">SHOP NOW &nbsp; →</a>
+    </div>
+
+    <img class="hero-image"
+      src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=1000&auto=format&fit=crop&q=85"
+      alt="Raya Bags Collection">
+  </section>
+
+  <section class="categories">
+    <a href="shop.html" class="category">
+      <div class="icon">♧</div>
+      <p>Handbags</p>
+    </a>
+
+    <a href="shop.html" class="category">
+      <div class="icon">▱</div>
+      <p>Tote Bags</p>
+    </a>
+
+    <a href="shop.html" class="category">
+      <div class="icon">♢</div>
+      <p>Shoulder Bags</p>
+    </a>
+
+    <a href="shop.html" class="category">
+      <div class="icon">◇</div>
+      <p>Sling Bags</p>
+    </a>
+
+    <a href="shop.html" class="category">
+      <div class="icon">▣</div>
+      <p>Backpacks</p>
+    </a>
+
+    <a href="shop.html" class="category">
+      <div class="icon">▱</div>
+      <p>Men's Bags</p>
+    </a>
+  </section>
+
+  <section class="section">
+    <div class="section-heading">
+      <div class="eyebrow">OUR BEST COLLECTION</div>
+      <h2>Featured Collection</h2>
+      <p>Timeless designs, made for you.</p>
+    </div>
+
+    <div class="product-grid">
+
+      <div class="product-card">
+        <div class="product-image">
+          <span class="tag">NEW</span>
+          <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&auto=format&fit=crop&q=80"
+            alt="Luna Handbag">
+        </div>
+        <div class="product-info">
+          <h3>Luna Handbag</h3>
+          <p>Rp 349.000</p>
+          <a href="shop.html">VIEW PRODUCT →</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <span class="tag">BEST SELLER</span>
+          <img src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=600&auto=format&fit=crop&q=80"
+            alt="Vera Tote Bag">
+        </div>
+        <div class="product-info">
+          <h3>Vera Tote Bag</h3>
+          <p>Rp 299.000</p>
+          <a href="shop.html">VIEW PRODUCT →</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <span class="tag">NEW</span>
+          <img src="https://images.unsplash.com/photo-1591561954557-26941169b49e?w=600&auto=format&fit=crop&q=80"
+            alt="Sienna Shoulder Bag">
+        </div>
+        <div class="product-info">
+          <h3>Sienna Shoulder Bag</h3>
+          <p>Rp 279.000</p>
+          <a href="shop.html">VIEW PRODUCT →</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <span class="tag">SALE</span>
+          <img src="https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?w=600&auto=format&fit=crop&q=80"
+            alt="Davin Sling Bag">
+        </div>
+        <div class="product-info">
+          <h3>Davin Sling Bag</h3>
+          <p>Rp 199.000</p>
+          <a href="shop.html">VIEW PRODUCT →</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&auto=format&fit=crop&q=80"
+            alt="Elio Backpack">
+        </div>
+        <div class="product-info">
+          <h3>Elio Backpack</h3>
+          <p>Rp 329.000</p>
+          <a href="shop.html">VIEW PRODUCT →</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600&auto=format&fit=crop&q=80"
+            alt="Reno Men's Bag">
+        </div>
+        <div class="product-info">
+          <h3>Reno Men's Bag</h3>
+          <p>Rp 399.000</p>
+          <a href="shop.html">VIEW PRODUCT →</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&auto=format&fit=crop&q=80"
+            alt="Mira Classic Bag">
+        </div>
+        <div class="product-info">
+          <h3>Mira Classic Bag</h3>
+          <p>Rp 319.000</p>
+          <a href="shop.html">VIEW PRODUCT →</a>
+        </div>
+      </div>
+
+      <div class="product-card">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=600&auto=format&fit=crop&q=80"
+            alt="Arden Office Bag">
+        </div>
+        <div class="product-info">
+          <h3>Arden Office Bag</h3>
+          <p>Rp 429.000</p>
+          <a href="shop.html">VIEW PRODUCT →</a>
+        </div>
+      </div>
+
+    </div>
+
+    <div class="view-all">
+      <a href="shop.html">EXPLORE ALL PRODUCTS</a>
+    </div>
+  </section>
+
+  <section class="promo">
+    <div class="promo-text">
+      <h2>Special Offer</h2>
+      <p>MAKE EVERY MOMENT MORE STYLISH</p>
+    </div>
+
+    <div class="promo-discount">
+      50<span>% OFF</span>
+    </div>
+
+    <a href="shop.html" class="btn">SHOP THE SALE →</a>
+  </section>
+
+  <section class="benefits">
+    <div class="benefit">
+      <div class="benefit-icon">♧</div>
+      <div>
+        <h3>Free Shipping</h3>
+        <p>Min. Purchase Rp 500.000</p>
+      </div>
+    </div>
+
+    <div class="benefit">
+      <div class="benefit-icon">♢</div>
+      <div>
+        <h3>Secure Payment</h3>
+        <p>100% Secure Payment</p>
+      </div>
+    </div>
+
+    <div class="benefit">
+      <div class="benefit-icon">♧</div>
+      <div>
+        <h3>Customer Support</h3>
+        <p>We're here to help</p>
+      </div>
+    </div>
+
+    <div class="benefit">
+      <div class="benefit-icon">♡</div>
+      <div>
+        <h3>Easy Returns</h3>
+        <p>7 Days Return Policy</p>
+      </div>
+    </div>
+  </section>
+
+  <footer id="about">
+    <div class="footer-content">
+
+      <div class="footer-brand">
+        <h2>RAYA BAGS</h2>
+        <p>Elegance in Every Carry. Discover beautiful bags that complete your everyday style. Quality, comfort, and
+          elegance in one collection.</p>
+      </div>
+
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="#about">About Us</a>
+        <a href="#contact">Contact</a>
+      </div>
+
+      <div class="footer-column">
+        <h3>Customer Care</h3>
+        <a href="#contact">Shipping Information</a>
+        <a href="#contact">Return Policy</a>
+        <a href="#contact">FAQ</a>
+        <a href="#contact">Terms & Conditions</a>
+      </div>
+
+      <div class="footer-column newsletter" id="contact">
+        <h3>Stay Connected</h3>
+        <p style="font-size:11px;color:#D3BFB4;">Subscribe to get the latest updates!</p>
+        <form onsubmit="subscribe(event)">
+          <input type="email" placeholder="Your Email Address" required>
+          <button type="submit">SUBSCRIBE →</button>
+        </form>
+      </div>
+
+    </div>
+
+    <div class="footer-bottom">
+      © 2026 RAYA BAGS. All Rights Reserved.
+    </div>
+  </footer>
+
+  <script>
+    function toggleMenu() {
+      document.getElementById('navigation').classList.toggle('show');
+    }
+
+    function subscribe(event) {
+      event.preventDefault();
+      alert('Thank you for subscribing to RAYA BAGS!');
+      event.target.reset();
+    }
+  </script>
+
+</body>
+
+</html>

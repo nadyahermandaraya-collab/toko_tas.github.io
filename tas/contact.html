@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>RAYA | Contact Us</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #faf8f5;
+      color: #292521;
+    }
+
+    header {
+      background: #fff;
+      padding: 22px 8%;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      border-bottom: 1px solid #eee8e2;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 32px;
+      letter-spacing: 5px;
+      font-weight: 600;
+      color: #705b4d;
+    }
+
+    nav {
+      display: flex;
+      gap: 35px;
+    }
+
+    nav a {
+      text-decoration: none;
+      color: #554b43;
+      font-size: 12px;
+      letter-spacing: 2px;
+      transition: 0.3s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #b28c70;
+    }
+
+    .hero {
+      background: #e9ded4;
+      text-align: center;
+      padding: 85px 20px;
+    }
+
+    .hero p {
+      font-size: 11px;
+      letter-spacing: 4px;
+      color: #8b6e5b;
+      margin-bottom: 18px;
+    }
+
+    .hero h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 55px;
+      font-weight: 400;
+      color: #44372f;
+      margin-bottom: 15px;
+    }
+
+    .hero span {
+      font-size: 14px;
+      color: #75665b;
+    }
+
+    .contact-section {
+      padding: 85px 10%;
+    }
+
+    .section-title {
+      text-align: center;
+      margin-bottom: 55px;
+    }
+
+    .section-title p {
+      color: #b28c70;
+      font-size: 11px;
+      letter-spacing: 4px;
+      margin-bottom: 15px;
+    }
+
+    .section-title h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 38px;
+      font-weight: 400;
+    }
+
+    .contact-container {
+      display: grid;
+      grid-template-columns: 1fr 1.2fr;
+      gap: 65px;
+    }
+
+    .contact-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 29px;
+      font-weight: 400;
+      margin-bottom: 18px;
+    }
+
+    .contact-info>p {
+      color: #81766e;
+      line-height: 1.9;
+      font-size: 14px;
+      margin-bottom: 35px;
+    }
+
+    .info-item {
+      display: flex;
+      gap: 18px;
+      margin-bottom: 28px;
+      align-items: flex-start;
+    }
+
+    .info-icon {
+      width: 45px;
+      height: 45px;
+      background: #eee5dc;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-size: 19px;
+      border-radius: 50%;
+      flex-shrink: 0;
+    }
+
+    .info-item h4 {
+      font-size: 13px;
+      margin-bottom: 7px;
+      letter-spacing: 1px;
+    }
+
+    .info-item p {
+      color: #81766e;
+      font-size: 13px;
+      line-height: 1.8;
+    }
+
+    .contact-form {
+      background: #fff;
+      padding: 40px;
+      box-shadow: 0 8px 35px rgba(70, 50, 35, 0.05);
+    }
+
+    .contact-form h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 29px;
+      font-weight: 400;
+      margin-bottom: 28px;
+    }
+
+    .form-group {
+      margin-bottom: 22px;
+    }
+
+    .form-group label {
+      display: block;
+      font-size: 12px;
+      margin-bottom: 10px;
+      color: #554b43;
+    }
+
+    .form-group input,
+    .form-group textarea {
+      width: 100%;
+      padding: 14px;
+      border: 1px solid #e7dfd8;
+      background: #fcfbf9;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 13px;
+      outline: none;
+    }
+
+    .form-group input:focus,
+    .form-group textarea:focus {
+      border-color: #b28c70;
+    }
+
+    .form-group textarea {
+      height: 130px;
+      resize: vertical;
+    }
+
+    .submit-btn {
+      background: #705b4d;
+      color: #fff;
+      border: none;
+      padding: 16px 35px;
+      font-size: 11px;
+      letter-spacing: 2px;
+      cursor: pointer;
+      transition: 0.3s;
+    }
+
+    .submit-btn:hover {
+      background: #a4866f;
+    }
+
+    .social-section {
+      background: #eee5dc;
+      padding: 55px 20px;
+      text-align: center;
+    }
+
+    .social-section h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 30px;
+      font-weight: 400;
+      margin-bottom: 15px;
+    }
+
+    .social-section p {
+      font-size: 13px;
+      color: #81766e;
+      margin-bottom: 25px;
+    }
+
+    .social-links {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      flex-wrap: wrap;
+    }
+
+    .social-links a {
+      text-decoration: none;
+      color: #705b4d;
+      font-size: 12px;
+      letter-spacing: 1px;
+    }
+
+    footer {
+      background: #44372f;
+      color: #fff;
+      padding: 45px 8% 25px;
+      text-align: center;
+    }
+
+    footer h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      letter-spacing: 5px;
+      margin-bottom: 15px;
+    }
+
+    footer p {
+      color: #d0c3b8;
+      font-size: 12px;
+      line-height: 2;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #66564b;
+      margin-top: 30px;
+      padding-top: 20px;
+    }
+
+    @media (max-width: 768px) {
+      header {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      nav {
+        gap: 15px;
+        flex-wrap: wrap;
+        justify-content: center;
+      }
+
+      nav a {
+        font-size: 10px;
+      }
+
+      .hero h1 {
+        font-size: 40px;
+      }
+
+      .contact-section {
+        padding: 55px 6%;
+      }
+
+      .contact-container {
+        grid-template-columns: 1fr;
+        gap: 40px;
+      }
+
+      .contact-form {
+        padding: 25px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <header>
+    <div class="logo">RAYA</div>
+    <nav>
+      <a href="index.html">HOME</a>
+      <a href="shop.html">SHOP</a>
+      <a href="about.html">ABOUT</a>
+      <a href="contact.html" class="active">CONTACT</a>
+    </nav>
+  </header>
+
+  <section class="hero">
+    <p>WE ARE HERE FOR YOU</p>
+    <h1>Get In Touch</h1>
+    <span>We would love to hear from you. Let us make your shopping experience special.</span>
+  </section>
+
+  <section class="contact-section">
+    <div class="section-title">
+      <p>CONTACT RAYA</p>
+      <h2>Let's Talk Together</h2>
+    </div>
+
+    <div class="contact-container">
+      <div class="contact-info">
+        <h3>We'd Love To Hear From You</h3>
+        <p>Have questions about our collections, products, or orders? Our team is ready to help you find the perfect bag
+          for every occasion.</p>
+
+        <div class="info-item">
+          <div class="info-icon">⌖</div>
+          <div>
+            <h4>OUR LOCATION</h4>
+            <p>Jl. Fashion Avenue No. 28<br>Jakarta, Indonesia 11470</p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">✉</div>
+          <div>
+            <h4>EMAIL ADDRESS</h4>
+            <p>hello@rayabags.com<br>support@rayabags.com</p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">☎</div>
+          <div>
+            <h4>PHONE NUMBER</h4>
+            <p>+62 812-3456-7890<br>+62 821-9876-5432</p>
+          </div>
+        </div>
+
+        <div class="info-item">
+          <div class="info-icon">◷</div>
+          <div>
+            <h4>OPENING HOURS</h4>
+            <p>Monday - Friday: 09.00 - 18.00<br>Saturday: 09.00 - 15.00<br>Sunday: Closed</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="contact-form">
+        <h3>Send Us A Message</h3>
+
+        <form onsubmit="sendMessage(event)">
+          <div class="form-group">
+            <label for="name">Your Name</label>
+            <input type="text" id="name" placeholder="Enter your name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="email">Your Email</label>
+            <input type="email" id="email" placeholder="Enter your email" required>
+          </div>
+
+          <div class="form-group">
+            <label for="subject">Subject</label>
+            <input type="text" id="subject" placeholder="What is this about?" required>
+          </div>
+
+          <div class="form-group">
+            <label for="message">Your Message</label>
+            <textarea id="message" placeholder="Write your message here..." required></textarea>
+          </div>
+
+          <button type="submit" class="submit-btn">SEND MESSAGE</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <section class="social-section">
+    <h2>Follow Our Journey</h2>
+    <p>Stay connected and discover the latest collections from RAYA.</p>
+    <div class="social-links">
+      <a href="https://www.instagram.com/" target="_blank">INSTAGRAM</a>
+      <a href="https://www.tiktok.com/" target="_blank">TIKTOK</a>
+      <a href="https://www.facebook.com/" target="_blank">FACEBOOK</a>
+      <a href="https://www.pinterest.com/" target="_blank">PINTEREST</a>
+    </div>
+  </section>
+
+  <footer>
+    <h2>RAYA</h2>
+    <p>Elegance in Every Carry.</p>
+    <p>Discover bags that express your personality and complete your style.</p>
+
+    <div class="footer-bottom">
+      <p>© 2026 RAYA. All Rights Reserved.</p>
+    </div>
+  </footer>
+
+  <script>
+    function sendMessage(event) {
+      event.preventDefault();
+
+      const name = document.getElementById('name').value;
+      const email = document.getElementById('email').value;
+      const subject = document.getElementById('subject').value;
+      const message = document.getElementById('message').value;
+
+      const text = `Hello RAYA,%0A%0AName: ${encodeURIComponent(name)}%0AEmail: ${encodeURIComponent(email)}%0ASubject: ${encodeURIComponent(subject)}%0AMessage: ${encodeURIComponent(message)}`;
+
+      window.open(`https://wa.me/6281234567890?text=${text}`, '_blank');
+    }
+  </script>
+
+</body>
+
+</html>

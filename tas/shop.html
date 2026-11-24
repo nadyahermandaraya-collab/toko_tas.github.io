@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Shop Collection | RAYA BAGS</title>
+  <link
+    href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700&family=Playfair+Display:wght@400;500;600;700&display=swap"
+    rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'DM Sans', sans-serif;
+      background: #FAF7F3;
+      color: #49372F;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    .announcement {
+      background: #86675B;
+      color: white;
+      text-align: center;
+      padding: 10px;
+      font-size: 11px;
+      letter-spacing: 1.5px;
+    }
+
+    header {
+      height: 82px;
+      padding: 0 7%;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      background: #FAF7F3;
+      border-bottom: 1px solid #EDE3DC;
+      position: sticky;
+      top: 0;
+      z-index: 100;
+    }
+
+    .logo {
+      font-family: 'Playfair Display', serif;
+      font-size: 29px;
+      letter-spacing: 2px;
+      color: #634438;
+    }
+
+    .logo span {
+      display: block;
+      font-family: 'DM Sans', sans-serif;
+      font-size: 8px;
+      text-align: center;
+      letter-spacing: 5px;
+      margin-top: 3px;
+    }
+
+    nav {
+      display: flex;
+      align-items: center;
+      gap: 38px;
+    }
+
+    nav a {
+      font-size: 12px;
+      letter-spacing: 1px;
+      transition: .3s;
+    }
+
+    nav a:hover,
+    nav a.active {
+      color: #A77C69;
+    }
+
+    .header-icons {
+      display: flex;
+      align-items: center;
+      gap: 22px;
+      font-size: 21px;
+    }
+
+    .menu-toggle {
+      display: none;
+      border: none;
+      background: none;
+      font-size: 25px;
+      color: #634438;
+      cursor: pointer;
+    }
+
+    .page-banner {
+      background: #EEE1D9;
+      text-align: center;
+      padding: 65px 20px;
+    }
+
+    .page-banner p {
+      color: #987363;
+      font-size: 11px;
+      letter-spacing: 4px;
+      margin-bottom: 15px;
+    }
+
+    .page-banner h1 {
+      font-family: 'Playfair Display', serif;
+      font-size: 48px;
+      font-weight: 400;
+    }
+
+    .page-banner span {
+      color: #A57968;
+      font-style: italic;
+    }
+
+    .breadcrumb {
+      padding: 22px 7%;
+      font-size: 11px;
+      color: #987F72;
+    }
+
+    .shop-section {
+      padding: 20px 7% 85px;
+    }
+
+    .shop-heading {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 30px;
+    }
+
+    .shop-heading h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 30px;
+      font-weight: 400;
+    }
+
+    .search-box input {
+      width: 250px;
+      padding: 13px 15px;
+      border: 1px solid #DCCBC0;
+      background: #FFFDFC;
+      outline: none;
+      font-family: inherit;
+      font-size: 12px;
+    }
+
+    .filter-list {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 35px;
+    }
+
+    .filter-btn {
+      border: 1px solid #D6C2B7;
+      background: transparent;
+      color: #76594C;
+      padding: 11px 20px;
+      font-family: inherit;
+      font-size: 11px;
+      cursor: pointer;
+      transition: .3s;
+    }
+
+    .filter-btn:hover,
+    .filter-btn.active {
+      background: #67483B;
+      color: white;
+      border-color: #67483B;
+    }
+
+    .result-info {
+      color: #987F72;
+      font-size: 12px;
+      margin-bottom: 20px;
+    }
+
+    .product-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 25px 20px;
+    }
+
+    .product-card {
+      background: #FFFDFC;
+      overflow: hidden;
+      transition: .3s;
+    }
+
+    .product-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px #80605215;
+    }
+
+    .product-image {
+      height: 285px;
+      position: relative;
+      overflow: hidden;
+      background: #EEE1D9;
+    }
+
+    .product-image img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: .4s;
+    }
+
+    .product-card:hover .product-image img {
+      transform: scale(1.06);
+    }
+
+    .tag {
+      position: absolute;
+      top: 13px;
+      left: 13px;
+      background: #A17C6C;
+      color: white;
+      font-size: 9px;
+      padding: 7px 12px;
+    }
+
+    .product-info {
+      padding: 16px 13px 18px;
+    }
+
+    .product-info h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 400;
+      margin-bottom: 8px;
+    }
+
+    .category-name {
+      font-size: 10px;
+      color: #A18A7E;
+      margin-bottom: 9px;
+    }
+
+    .price {
+      font-size: 13px;
+      font-weight: 600;
+      color: #806052;
+      margin-bottom: 14px;
+    }
+
+    .add-btn {
+      width: 100%;
+      border: 1px solid #806052;
+      background: transparent;
+      color: #67483B;
+      padding: 12px;
+      font-family: inherit;
+      font-size: 10px;
+      letter-spacing: 1px;
+      cursor: pointer;
+      transition: .3s;
+    }
+
+    .add-btn:hover {
+      background: #67483B;
+      color: white;
+    }
+
+    .empty-message {
+      display: none;
+      text-align: center;
+      padding: 70px 20px;
+      color: #987F72;
+      grid-column: 1 / -1;
+    }
+
+    .empty-message h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 25px;
+      font-weight: 400;
+      margin-bottom: 10px;
+    }
+
+    footer {
+      background: #49352D;
+      color: white;
+      padding: 55px 7% 22px;
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1.2fr 1.5fr;
+      gap: 40px;
+      padding-bottom: 40px;
+    }
+
+    .footer-brand h2 {
+      font-family: 'Playfair Display', serif;
+      font-size: 28px;
+      letter-spacing: 2px;
+      margin-bottom: 13px;
+    }
+
+    .footer-brand p {
+      color: #D3BFB4;
+      font-size: 11px;
+      line-height: 1.9;
+    }
+
+    .footer-column h3 {
+      font-family: 'Playfair Display', serif;
+      font-size: 18px;
+      font-weight: 400;
+      margin-bottom: 19px;
+    }
+
+    .footer-column a {
+      display: block;
+      color: #D3BFB4;
+      font-size: 11px;
+      margin-bottom: 12px;
+    }
+
+    .footer-bottom {
+      border-top: 1px solid #79645A;
+      padding-top: 20px;
+      text-align: center;
+      color: #D3BFB4;
+      font-size: 10px;
+    }
+
+    @media (max-width: 900px) {
+      .product-grid {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      .footer-content {
+        grid-template-columns: repeat(2, 1fr);
+      }
+
+      nav {
+        gap: 18px;
+      }
+    }
+
+    @media (max-width: 600px) {
+      header {
+        height: 72px;
+        padding: 0 5%;
+      }
+
+      .logo {
+        font-size: 22px;
+      }
+
+      .menu-toggle {
+        display: block;
+      }
+
+      nav {
+        display: none;
+        position: absolute;
+        top: 72px;
+        left: 0;
+        width: 100%;
+        background: #FAF7F3;
+        flex-direction: column;
+        padding: 25px;
+        gap: 22px;
+      }
+
+      nav.show {
+        display: flex;
+      }
+
+      .header-icons {
+        gap: 12px;
+      }
+
+      .page-banner {
+        padding: 50px 15px;
+      }
+
+      .page-banner h1 {
+        font-size: 38px;
+      }
+
+      .shop-section {
+        padding: 20px 5% 60px;
+      }
+
+      .shop-heading {
+        flex-direction: column;
+        align-items: flex-start;
+      }
+
+      .search-box,
+      .search-box input {
+        width: 100%;
+      }
+
+      .filter-list {
+        gap: 8px;
+      }
+
+      .filter-btn {
+        padding: 10px 13px;
+      }
+
+      .product-grid {
+        gap: 15px 11px;
+      }
+
+      .product-image {
+        height: 205px;
+      }
+
+      .product-info h3 {
+        font-size: 15px;
+      }
+
+      .footer-content {
+        grid-template-columns: 1fr 1fr;
+        gap: 30px 20px;
+      }
+
+      footer {
+        padding: 40px 6% 20px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="announcement">
+    FREE SHIPPING FOR ORDERS OVER RP 500.000 ✦ SHOP NOW!
+  </div>
+
+  <header>
+    <a href="index.html" class="logo">
+      RAYA BAGS
+      <span>COLLECTION</span>
+    </a>
+
+    <nav id="navigation">
+      <a href="index.html">HOME</a>
+      <a href="shop.html" class="active">SHOP</a>
+      <a href="index.html#about">ABOUT</a>
+      <a href="index.html#contact">CONTACT</a>
+    </nav>
+
+    <div class="header-icons">
+      <a href="#search" aria-label="Search">⌕</a>
+      <a href="shop.html" aria-label="Favorites">♡</a>
+      <a href="cart.html" aria-label="Cart">♧ <span id="cart-count">0</span></a>
+    </div>
+
+    <button class="menu-toggle" onclick="toggleMenu()" aria-label="Open menu">☰</button>
+  </header>
+
+  <section class="page-banner">
+    <p>DISCOVER YOUR FAVORITE</p>
+    <h1>Our <span>Collection</span></h1>
+  </section>
+
+  <div class="breadcrumb">
+    HOME / SHOP COLLECTION
+  </div>
+
+  <section class="shop-section">
+
+    <div class="shop-heading">
+      <h2>Shop All Products</h2>
+      <div class="search-box" id="search">
+        <input type="text" id="searchInput" placeholder="Search your favorite bag..." oninput="filterProducts()">
+      </div>
+    </div>
+
+    <div class="filter-list">
+      <button class="filter-btn active" onclick="setCategory('all', this)">All Products</button>
+      <button class="filter-btn" onclick="setCategory('Handbags', this)">Handbags</button>
+      <button class="filter-btn" onclick="setCategory('Tote Bags', this)">Tote Bags</button>
+      <button class="filter-btn" onclick="setCategory('Shoulder Bags', this)">Shoulder Bags</button>
+      <button class="filter-btn" onclick="setCategory('Sling Bags', this)">Sling Bags</button>
+      <button class="filter-btn" onclick="setCategory('Backpacks', this)">Backpacks</button>
+      <button class="filter-btn" onclick="setCategory('Men Bags', this)">Men's Bags</button>
+    </div>
+
+    <p class="result-info" id="resultInfo">Showing 12 products</p>
+
+    <div class="product-grid" id="productGrid">
+
+      <div class="product-card" data-name="Luna Handbag" data-category="Handbags" data-price="349000">
+        <div class="product-image">
+          <span class="tag">NEW</span>
+          <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&auto=format&fit=crop&q=80"
+            alt="Luna Handbag">
+        </div>
+        <div class="product-info">
+          <h3>Luna Handbag</h3>
+          <p class="category-name">Handbags</p>
+          <p class="price">Rp 349.000</p>
+          <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-name="Vera Tote Bag" data-category="Tote Bags" data-price="299000">
+        <div class="product-image">
+          <span class="tag">BEST SELLER</span>
+          <img src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=600&auto=format&fit=crop&q=80"
+            alt="Vera Tote Bag">
+        </div>
+        <div class="product-info">
+          <h3>Vera Tote Bag</h3>
+          <p class="category-name">Tote Bags</p>
+          <p class="price">Rp 299.000</p>
+          <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-name="Sienna Shoulder Bag" data-category="Shoulder Bags" data-price="279000">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1591561954557-26941169b49e?w=600&auto=format&fit=crop&q=80"
+            alt="Sienna Shoulder Bag">
+        </div>
+        <div class="product-info">
+          <h3>Sienna Shoulder Bag</h3>
+          <p class="category-name">Shoulder Bags</p>
+          <p class="price">Rp 279.000</p>
+          <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-name="Davin Sling Bag" data-category="Sling Bags" data-price="199000">
+        <div class="product-image">
+          <span class="tag">SALE</span>
+          <img src="https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?w=600&auto=format&fit=crop&q=80"
+            alt="Davin Sling Bag">
+        </div>
+        <div class="product-info">
+          <h3>Davin Sling Bag</h3>
+          <p class="category-name">Sling Bags</p>
+          <p class="price">Rp 199.000</p>
+          <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-name="Elio Backpack" data-category="Backpacks" data-price="329000">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&auto=format&fit=crop&q=80"
+            alt="Elio Backpack">
+        </div>
+        <div class="product-info">
+          <h3>Elio Backpack</h3>
+          <p class="category-name">Backpacks</p>
+          <p class="price">Rp 329.000</p>
+          <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-name="Reno Men's Bag" data-category="Men Bags" data-price="399000">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1548036328-c9fa89d128fa?w=600&auto=format&fit=crop&q=80"
+            alt="Reno Men's Bag">
+        </div>
+        <div class="product-info">
+          <h3>Reno Men's Bag</h3>
+          <p class="category-name">Men's Bags</p>
+          <p class="price">Rp 399.000</p>
+          <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-name="Mira Classic Bag" data-category="Handbags" data-price="319000">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1584917865442-de89df76afd3?w=600&auto=format&fit=crop&q=80"
+            alt="Mira Classic Bag">
+        </div>
+        <div class="product-info">
+          <h3>Mira Classic Bag</h3>
+          <p class="category-name">Handbags</p>
+          <p class="price">Rp 319.000</p>
+          <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-name="Arden Office Bag" data-category="Men Bags" data-price="429000">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&auto=format&fit=crop&q=80"
+            alt="Arden Office Bag">
+        </div>
+        <div class="product-info">
+          <h3>Arden Office Bag</h3>
+          <p class="category-name">Men's Bags</p>
+          <p class="price">Rp 429.000</p>
+          <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-name="Bella Shoulder Bag" data-category="Shoulder Bags" data-price="289000">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1591561954557-26941169b49e?w=600&auto=format&fit=crop&q=80"
+            alt="Bella Shoulder Bag">
+        </div>
+        <div class="product-info">
+          <h3>Bella Shoulder Bag</h3>
+          <p class="category-name">Shoulder Bags</p>
+          <p class="price">Rp 289.000</p>
+          <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-name="Mason Crossbody Bag" data-category="Sling Bags" data-price="249000">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1566150905458-1bf1fc113f0d?w=600&auto=format&fit=crop&q=80"
+            alt="Mason Crossbody Bag">
+        </div>
+        <div class="product-info">
+          <h3>Mason Crossbody Bag</h3>
+          <p class="category-name">Sling Bags</p>
+          <p class="price">Rp 249.000</p>
+          <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-name="Clara Mini Tote" data-category="Tote Bags" data-price="259000">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1590874103328-eac38a683ce7?w=600&auto=format&fit=crop&q=80"
+            alt="Clara Mini Tote">
+        </div>
+        <div class="product-info">
+          <h3>Clara Mini Tote</h3>
+          <p class="category-name">Tote Bags</p>
+          <p class="price">Rp 259.000</p>
+          <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+        </div>
+      </div>
+
+      <div class="product-card" data-name="Urban Travel Backpack" data-category="Backpacks" data-price="379000">
+        <div class="product-image">
+          <img src="https://images.unsplash.com/photo-1553062407-98eeb64c6a62?w=600&auto=format&fit=crop&q=80"
+            alt="Urban Travel Backpack">
+        </div>
+        <div class="product-info">
+          <h3>Urban Travel Backpack</h3>
+          <p class="category-name">Backpacks</p>
+          <p class="price">Rp 379.000</p>
+          <button class="add-btn" onclick="addToCart(this)">ADD TO CART</button>
+        </div>
+      </div>
+
+      <div class="empty-message" id="emptyMessage">
+        <h3>Product Not Found</h3>
+        <p>Try searching for another bag.</p>
+      </div>
+
+    </div>
+
+  </section>
+
+  <footer>
+    <div class="footer-content">
+      <div class="footer-brand">
+        <h2>RAYA BAGS</h2>
+        <p>Elegance in Every Carry. Discover beautiful bags that complete your everyday style. Quality, comfort, and
+          elegance in one collection.</p>
+      </div>
+
+      <div class="footer-column">
+        <h3>Quick Links</h3>
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop</a>
+        <a href="index.html#about">About Us</a>
+        <a href="index.html#contact">Contact</a>
+      </div>
+
+      <div class="footer-column">
+        <h3>Customer Care</h3>
+        <a href="index.html#contact">Shipping Information</a>
+        <a href="index.html#contact">Return Policy</a>
+        <a href="index.html#contact">FAQ</a>
+        <a href="index.html#contact">Terms & Conditions</a>
+      </div>
+
+      <div class="footer-column">
+        <h3>Our Collection</h3>
+        <a href="shop.html">Handbags</a>
+        <a href="shop.html">Tote Bags</a>
+        <a href="shop.html">Sling Bags</a>
+        <a href="shop.html">Men's Bags</a>
+      </div>
+    </div>
+
+    <div class="footer-bottom">
+      © 2026 RAYA BAGS. All Rights Reserved.
+    </div>
+  </footer>
+
+  <script>
+    let selectedCategory = 'all';
+
+    function toggleMenu() {
+      document.getElementById('navigation').classList.toggle('show');
+    }
+
+    function setCategory(category, button) {
+      selectedCategory = category;
+
+      document.querySelectorAll('.filter-btn').forEach(btn => {
+        btn.classList.remove('active');
+      });
+
+      button.classList.add('active');
+      filterProducts();
+    }
+
+    function filterProducts() {
+      const search = document.getElementById('searchInput').value.toLowerCase();
+      const products = document.querySelectorAll('.product-card');
+      let count = 0;
+
+      products.forEach(product => {
+        const name = product.dataset.name.toLowerCase();
+        const category = product.dataset.category;
+
+        const matchesSearch = name.includes(search);
+        const matchesCategory = selectedCategory === 'all' || category === selectedCategory;
+
+        if (matchesSearch && matchesCategory) {
+          product.style.display = 'block';
+          count++;
+        } else {
+          product.style.display = 'none';
+        }
+      });
+
+      document.getElementById('resultInfo').textContent = 'Showing ' + count + ' products';
+      document.getElementById('emptyMessage').style.display = count === 0 ? 'block' : 'none';
+    }
+
+    function addToCart(button) {
+      const card = button.closest('.product-card');
+      const product = {
+        name: card.dataset.name,
+        price: Number(card.dataset.price),
+        image: card.querySelector('img').src,
+        quantity: 1
+      };
+
+      let cart = JSON.parse(localStorage.getItem('rayaCart')) || [];
+      const existing = cart.find(item => item.name === product.name);
+
+      if (existing) {
+        existing.quantity += 1;
+      } else {
+        cart.push(product);
+      }
+
+      localStorage.setItem('rayaCart', JSON.stringify(cart));
+      updateCartCount();
+
+      button.textContent = 'ADDED TO CART ✓';
+
+      setTimeout(() => {
+        button.textContent = 'ADD TO CART';
+      }, 1500);
+    }
+
+    function updateCartCount() {
+      const cart = JSON.parse(localStorage.getItem('rayaCart')) || [];
+      const count = cart.reduce((total, item) => total + item.quantity, 0);
+      document.getElementById('cart-count').textContent = count;
+    }
+
+    updateCartCount();
+  </script>
+
+</body>
+
+</html>
